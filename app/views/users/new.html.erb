@@ -10,6 +10,9 @@ html version of the form
 </form> 
 
 -->
+
+<!--
+Forms using form_tag
 <%= form_tag('/users', method: "post") do %>
 	<%= label_tag(:username, "Username:") %>
 	<%= text_field_tag(:username) %><br>
@@ -21,4 +24,18 @@ html version of the form
 	<%= password_field_tag(:password) %><br>
 
 	<%= submit_tag 'Submit' %>
+<% end %>
+-->
+
+<%= form_for @user do |f| %>
+	<%= f.label :username %>
+	<%= f.text_field :username %><br>
+
+	<%= f.label :email %>
+	<%= f.text_field :email, :value => "example@example.com" %><br>
+
+	<%= f.label :password %>
+	<%= f.password_field :password %><br>
+
+	<%= f.submit 'Submit' %>
 <% end %>
