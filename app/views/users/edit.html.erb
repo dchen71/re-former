@@ -1,7 +1,8 @@
-<h3>New User</h3>
+<h3>Edit User</h3>
+
 <!--
 html version of the form
-<form action="/users" method="post" accept-charset="UTF-8">
+<form action="/users" method="patch" accept-charset="UTF-8">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
   Username: <input type="text" name="user[username]"><br>
   Email: <input type="text" name="user[email]"><br>
@@ -13,7 +14,7 @@ html version of the form
 
 <!--
 Forms using form_tag
-<%= form_tag('/users', method: "post") do %>
+<%= form_tag('/users', method: "patch") do %>
 	<%= label_tag(:username, "Username:") %>
 	<%= text_field_tag(:username) %><br>
 
@@ -27,6 +28,7 @@ Forms using form_tag
 <% end %>
 -->
 
+
 <%= form_for @user do |f| %>
 	<ul>
 	  <% @user.errors.full_messages.each do |error| %>
@@ -34,12 +36,11 @@ Forms using form_tag
 	  <% end %>
 	</ul>
 
-
 	<%= f.label :username %>
 	<%= f.text_field :username %><br>
 
 	<%= f.label :email %>
-	<%= f.text_field :email, :value => "example@example.com" %><br>
+	<%= f.text_field :email %><br>
 
 	<%= f.label :password %>
 	<%= f.password_field :password %><br>
